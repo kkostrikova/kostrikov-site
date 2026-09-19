@@ -84,8 +84,6 @@ html[lang=uk] .hero h1{font-size:clamp(40px,5.2vw,104px)}
 .h-media .stone{position:absolute;inset:60px 0 0 0;transition:transform .9s var(--ease);will-change:transform}
 .h-media video{width:100%;height:100%;object-fit:cover;display:block;-webkit-mask-image:linear-gradient(to right,transparent,#000 8%),linear-gradient(to bottom,transparent,#000 6%);-webkit-mask-composite:source-in;mask-image:linear-gradient(to right,transparent,#000 8%),linear-gradient(to bottom,transparent,#000 6%);mask-composite:intersect}
 .quote{position:absolute;z-index:2;right:var(--pad);bottom:clamp(28px,4vw,56px);text-align:right;font:400 clamp(20px,1.9vw,36px)/1.2 var(--serif);letter-spacing:-.02em;color:#263029}
-.matlabel{position:absolute;z-index:2;left:clamp(20px,3vw,48px);bottom:clamp(28px,4vw,56px);display:grid;gap:6px}
-.matlabel b{font:400 clamp(22px,1.8vw,34px)/1.1 var(--serif);letter-spacing:-.02em;transition:opacity .3s}
 
 /* MARQUEE */
 .marquee{border-block:1px solid var(--line);overflow:hidden;padding-block:22px;background:var(--bg)}
@@ -119,7 +117,9 @@ h2{font:300 clamp(36px,4.4vw,84px)/1 var(--serif);letter-spacing:-.03em;margin:1
 
 /* ABOUT */
 .about{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:clamp(28px,6vw,110px);align-items:start}
-.about p.big{font:300 clamp(26px,2.7vw,48px)/1.25 var(--serif);letter-spacing:-.02em;margin:18px 0 0;text-wrap:pretty}
+.about p.big{font:300 clamp(26px,2.7vw,48px)/1.25 var(--serif);letter-spacing:-.02em;margin:18px 0 0;text-wrap:pretty;text-wrap:balance}
+/* Ukrainian runs longer: a notch smaller keeps it at six lines, which is where the browser still balances line lengths */
+html[lang=uk] .about p.big{font-size:clamp(24px,2.5vw,36px)}
 .about p.big em{color:#5A625E}
 .about .ph{border-radius:6px;overflow:hidden;aspect-ratio:4/5}
 .about .ph img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.08);transition:transform 1.8s var(--ease)}
@@ -211,7 +211,6 @@ h2{font:300 clamp(36px,4.4vw,84px)/1 var(--serif);letter-spacing:-.03em;margin:1
   </div>
   <div class="h-media" id="hm">
     <div class="stone" id="stone"><video id="vid" poster="poster.jpg" autoplay muted loop playsinline preload="auto" aria-label="A floating stone changing its surface finish"><source src="hero-mobile.mp4" type="video/mp4" media="(max-width: 700px)"><source src="hero.mp4" type="video/mp4"></video></div>
-    <div class="matlabel"><span class="eyebrow" data-i="ns">Now showing</span><b id="mat">Grey Venetian</b></div>
     <div class="quote" data-i="qt">Texture transforms<br>space.</div>
   </div>
 </div>
@@ -287,9 +286,8 @@ const v=document.getElementById('vid'),chips=document.getElementById('chips');le
 MATS.forEach((m,i)=>{const b=document.createElement('button');b.type='button';b.textContent=m[1];b.onclick=()=>go(i);chips.appendChild(b)});
 function go(i){i=(i+MATS.length)%MATS.length;v.currentTime=MATS[i][0]+.05;v.play().catch(()=>{})}
 document.getElementById('prev').onclick=()=>go(cur-1);document.getElementById('next').onclick=()=>go(cur+1);
-const matEl=document.getElementById('mat');
 function tick(){const t=v.currentTime,d=v.duration||30;let i=0;MATS.forEach((m,j)=>{if(t>=m[0])i=j});
-  if(i!==cur){cur=i;document.getElementById('num').textContent=String(i+1).padStart(2,'0');matEl.style.opacity=0;setTimeout(()=>{matEl.textContent=MATS[i][LI];matEl.style.opacity=1},180);[...chips.children].forEach((c,j)=>c.classList.toggle('on',j===i))}
+  if(i!==cur){cur=i;document.getElementById('num').textContent=String(i+1).padStart(2,'0');[...chips.children].forEach((c,j)=>c.classList.toggle('on',j===i))}
   const end=i<MATS.length-1?MATS[i+1][0]:d;document.getElementById('prog').style.width=Math.min(100,(t-MATS[i][0])/(end-MATS[i][0])*100)+'%';requestAnimationFrame(tick)}
 requestAnimationFrame(tick);if(reduce)v.pause();
 
@@ -335,7 +333,6 @@ function setLang(l){LANG=l;LI=l==='uk'?2:1;document.documentElement.lang=l==='uk
   document.querySelectorAll('[data-i]').forEach(e=>{const v=T[l][e.dataset.i];if(v!=null)e.innerHTML=v});
   document.getElementById('lang').textContent=l==='uk'?'EN':'UA';
   [...chips.children].forEach((c,j)=>c.textContent=MATS[j][LI]);
-  if(cur>=0)matEl.textContent=MATS[cur][LI];
   words=WORDS[l];drawMq();
   [...fl.children].forEach((li,j)=>{li.querySelector('b').textContent=FX[j][l==='uk'?3:1];li.querySelector('.d').textContent=FX[j][l==='uk'?4:2]});
   const on=[...fl.children].findIndex(x=>x.classList.contains('on'));if(on>=0)fc.textContent=FX[on][l==='uk'?3:1];
