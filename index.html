@@ -86,9 +86,6 @@ html[lang=uk] .hero h1{font-size:clamp(40px,5.2vw,104px)}
 .quote{position:absolute;z-index:2;right:var(--pad);bottom:clamp(28px,4vw,56px);text-align:right;font:400 clamp(20px,1.9vw,36px)/1.2 var(--serif);letter-spacing:-.02em;color:#263029}
 .matlabel{position:absolute;z-index:2;left:clamp(20px,3vw,48px);bottom:clamp(28px,4vw,56px);display:grid;gap:6px}
 .matlabel b{font:400 clamp(22px,1.8vw,34px)/1.1 var(--serif);letter-spacing:-.02em;transition:opacity .3s}
-.scrollcue{position:absolute;left:50%;bottom:18px;z-index:2;transform:translateX(-50%);width:1px;height:48px;background:rgba(27,31,29,.2);overflow:hidden}
-.scrollcue::after{content:"";position:absolute;left:0;top:-50%;width:1px;height:50%;background:var(--ink);animation:cue 2.2s var(--ease) infinite}
-@keyframes cue{to{top:100%}}
 
 /* MARQUEE */
 .marquee{border-block:1px solid var(--line);overflow:hidden;padding-block:22px;background:var(--bg)}
@@ -181,7 +178,7 @@ h2{font:300 clamp(36px,4.4vw,84px)/1 var(--serif);letter-spacing:-.03em;margin:1
 @media (max-width:900px){
   .links{display:none}.nav{grid-template-columns:1fr auto}
   .hero{grid-template-columns:1fr}.h-text{padding:104px var(--pad) 12px}
-  .chips,.h-foot{max-width:none}.h-foot{flex-wrap:wrap}.h-media{min-height:440px}.h-media .stone{inset:0}.scrollcue{display:none}
+  .chips,.h-foot{max-width:none}.h-foot{flex-wrap:wrap}.h-media{min-height:440px}.h-media .stone{inset:0}
   .fx,.about,.c-grid{grid-template-columns:1fr}.fx .view{position:relative;top:0;order:-1;aspect-ratio:1}
   .fx button{grid-template-columns:40px 1fr}.fx button span.d{display:none}
 }
@@ -217,7 +214,6 @@ h2{font:300 clamp(36px,4.4vw,84px)/1 var(--serif);letter-spacing:-.03em;margin:1
     <div class="matlabel"><span class="eyebrow" data-i="ns">Now showing</span><b id="mat">Grey Venetian</b></div>
     <div class="quote" data-i="qt">Texture transforms<br>space.</div>
   </div>
-  <div class="scrollcue" aria-hidden="true"></div>
 </div>
 
 <div class="marquee" aria-hidden="true"><div class="track" id="track"></div></div>
