@@ -118,7 +118,7 @@ h2{font:300 clamp(36px,4.4vw,84px)/1 var(--serif);letter-spacing:-.03em;margin:1
 .fx .cap{position:absolute;left:20px;bottom:18px;z-index:2;font:500 13px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:#fff;text-shadow:0 1px 12px rgba(0,0,0,.35)}
 
 /* ABOUT */
-.about{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:clamp(28px,6vw,110px);align-items:center}
+.about{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:clamp(28px,6vw,110px);align-items:start}
 .about p.big{font:300 clamp(26px,2.7vw,48px)/1.25 var(--serif);letter-spacing:-.02em;margin:18px 0 0;text-wrap:pretty}
 .about p.big em{color:#5A625E}
 .about .ph{border-radius:6px;overflow:hidden;aspect-ratio:4/5}
@@ -233,12 +233,12 @@ h2{font:300 clamp(36px,4.4vw,84px)/1 var(--serif);letter-spacing:-.03em;margin:1
       <p class="big" data-i="abp">Viktor Kostrikov creates decorative plaster and wall finishes by hand: Venetian plaster, marble effects, sculpted stone relief and ornament. <em>Each surface is built on site, layer by layer, for the room it belongs to.</em></p>
       <a class="ow" href="#contact" data-i="sp">Start a project</a>
     </div>
-    <div class="ph rv"><img data-a="int1" width="716" height="896" alt="Travertine plinth with a stone bowl against a plaster wall (mood image)"></div>
+    <div class="ph rv"><img data-a="strokes" width="614" height="768" alt="A wall where a smooth finish meets thick white plaster strokes (mood image)"></div>
   </div>
 </section>
 
 <div class="in"><div class="band rv">
-  <img data-a="int2" width="1376" height="768" alt="A wall where a smooth finish meets thick white plaster strokes (mood image)">
+  <img data-a="int2" width="1051" height="587" alt="Vase with olive branches against a grey Venetian plaster wall (mood image)">
   <div class="t"><h2 data-i="bh">Interiors with a <em>deeper</em> meaning.</h2><p data-i="bp">Decorative finishes for homes, boutiques and distinctive spaces.</p><a class="ow" href="#work" data-i="ow">Our work</a></div>
 </div></div>
 
@@ -266,8 +266,8 @@ h2{font:300 clamp(36px,4.4vw,84px)/1 var(--serif);letter-spacing:-.03em;margin:1
 </footer>
 
 <script>
-const A={"int1": "img/int1.jpg", "int2": "img/int2.jpg", "marble": "img/marble.jpg", "micro": "img/micro.jpg", "gold": "img/gold.jpg", "trav": "img/trav.jpg", "ven": "img/ven.jpg", "w_rock-living": "img/w_rock-living.jpg", "w_stencil-gold": "img/w_stencil-gold.jpg", "w_dune": "img/w_dune.jpg", "w_art-panel": "img/w_art-panel.jpg", "w_white-rock": "img/w_white-rock.jpg", "w_marble-veins": "img/w_marble-veins.jpg", "relief": "img/relief.jpg"};
-const D={int1:[716,896],int2:[1376,768],ven:[520,520],trav:[520,520],micro:[520,520],marble:[520,520],relief:[520,520],gold:[520,520],"w_rock-living":[576,590],"w_stencil-gold":[576,1024],w_dune:[576,744],"w_art-panel":[576,410],"w_white-rock":[576,1024],"w_marble-veins":[576,1024]};
+const A={"strokes": "img/strokes.jpg", "int1": "img/int1.jpg", "int2": "img/int2.jpg", "marble": "img/marble.jpg", "micro": "img/micro.jpg", "gold": "img/gold.jpg", "trav": "img/trav.jpg", "ven": "img/ven.jpg", "w_rock-living": "img/w_rock-living.jpg", "w_stencil-gold": "img/w_stencil-gold.jpg", "w_dune": "img/w_dune.jpg", "w_art-panel": "img/w_art-panel.jpg", "w_white-rock": "img/w_white-rock.jpg", "w_marble-veins": "img/w_marble-veins.jpg", "relief": "img/relief.jpg"};
+const D={strokes:[614,768],int1:[716,896],int2:[1051,587],ven:[520,520],trav:[520,520],micro:[520,520],marble:[520,520],relief:[520,520],gold:[520,520],"w_rock-living":[576,590],"w_stencil-gold":[576,1024],w_dune:[576,744],"w_art-panel":[576,410],"w_white-rock":[576,1024],"w_marble-veins":[576,1024]};
 document.querySelectorAll('img[data-a]').forEach(i=>{i.loading='lazy';i.decoding='async';i.src=A[i.dataset.a]});
 const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 
