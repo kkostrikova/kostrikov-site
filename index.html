@@ -265,7 +265,7 @@ html[lang=uk] .about p.big{font-size:clamp(24px,2.5vw,36px)}
 </footer>
 
 <script>
-const A={"strokes": "img/strokes.jpg", "int1": "img/int1.jpg", "int2": "img/int2.jpg", "marble": "img/marble.jpg", "micro": "img/micro.jpg", "gold": "img/gold.jpg", "trav": "img/trav.jpg", "ven": "img/ven.jpg", "w_rock-living": "img/w_rock-living.jpg", "w_stencil-gold": "img/w_stencil-gold.jpg", "w_dune": "img/w_dune.jpg", "w_art-panel": "img/w_art-panel.jpg", "w_white-rock": "img/w_white-rock.jpg", "w_marble-veins": "img/w_marble-veins.jpg", "relief": "img/relief.jpg"};
+const A={"strokes": "img/strokes.webp", "int1": "img/int1.webp", "int2": "img/int2.webp", "marble": "img/marble.webp", "micro": "img/micro.webp", "gold": "img/gold.webp", "trav": "img/trav.webp", "ven": "img/ven.webp", "w_rock-living": "img/w_rock-living.webp", "w_stencil-gold": "img/w_stencil-gold.webp", "w_dune": "img/w_dune.webp", "w_art-panel": "img/w_art-panel.webp", "w_white-rock": "img/w_white-rock.webp", "w_marble-veins": "img/w_marble-veins.webp", "relief": "img/relief.webp"};
 const D={strokes:[614,768],int1:[716,896],int2:[1051,587],ven:[520,520],trav:[520,520],micro:[520,520],marble:[520,520],relief:[520,520],gold:[520,520],"w_rock-living":[576,590],"w_stencil-gold":[576,1024],w_dune:[576,744],"w_art-panel":[576,410],"w_white-rock":[576,1024],"w_marble-veins":[576,1024]};
 document.querySelectorAll('img[data-a]').forEach(i=>{i.loading='lazy';i.decoding='async';i.src=A[i.dataset.a]});
 const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -311,7 +311,7 @@ function fx(i){[...fl.children].forEach((l,j)=>l.classList.toggle('on',j===i));[
 fx(0);
 
 /* work rail */
-const W=[["w_rock-living","Sculpted rock","Living room","Скульптурна скеля","Вітальня"],["w_stencil-gold","Stencil & gilding","Grey Venetian","Трафарет і золочення","Сіра венеціанка"],["w_dune","Sand-dune relief","Bedroom","Рельєф «дюни»","Спальня"],["w_art-panel","Textured panel","Lounge","Фактурне панно","Лаунж"],["w_white-rock","Rock relief","Window wall","Кам’яний рельєф","Стіна біля вікна"],["w_marble-veins","Marble effect","Feature wall","Ефект мармуру","Акцентна стіна"]];
+const W=[["w_stencil-gold","Stencil & gilding","Grey Venetian","Трафарет і золочення","Сіра венеціанка"],["w_white-rock","Rock relief","Window wall","Кам’яний рельєф","Стіна біля вікна"],["w_dune","Sand-dune relief","Bedroom","Рельєф «дюни»","Спальня"],["w_rock-living","Sculpted rock","Living room","Скульптурна скеля","Вітальня"],["w_marble-veins","Marble effect","Feature wall","Ефект мармуру","Акцентна стіна"],["w_art-panel","Textured panel","Lounge","Фактурне панно","Лаунж"]];
 const rail=document.getElementById('rail');
 rail.innerHTML=W.map(w=>`<figure><div class="im"><img src="${A[w[0]]}" width="${D[w[0]][0]}" height="${D[w[0]][1]}" alt="${w[1]}, ${w[2]}" loading="lazy" decoding="async" draggable="false"></div><figcaption><b>${w[1]}</b><span>${w[2]}</span></figcaption></figure>`).join('');
 const step=()=>rail.querySelector('figure').offsetWidth+20;
