@@ -181,18 +181,18 @@ h2{font:500 clamp(40px,5vw,100px)/.95 var(--serif);letter-spacing:-.02em;margin:
   <div class="h-text">
     <span class="eyebrow fade" data-i="hs">Handcrafted surfaces</span>
     <h1 aria-label="Surfaces that change a room" data-i="h1"><span class="w"><span>Surfaces</span></span> <span class="w"><span>that</span></span><br><span class="w"><span><em>change</em></span></span> <span class="w"><span>a</span></span> <span class="w"><span>room</span></span></h1>
-    <p class="fade" data-i="hp">Venetian plaster, marble effects and sculpted relief, applied by hand, layer by layer.</p>
+    <p class="fade" data-i="hp">Decorative plaster and finishes, applied by hand, layer by layer.</p>
     <div class="chips fade" id="chips"></div>
-    <div class="fade"><a class="pill" href="#finishes" data-i="ef">Explore finishes <span aria-hidden="true">→</span></a></div>
+    <div class="fade"><a class="pill" href="#work" data-i="ef">See the work <span aria-hidden="true">→</span></a></div>
     <div class="h-foot fade">
-      <span class="eyebrow" data-i="nm">Natural materials.<br>Extraordinary spaces.</span>
+      <span class="eyebrow" data-i="nm">Crafted by hand.<br>Designed for how you live.</span>
       <div class="counter"><span id="num">01</span><i><b id="prog"></b></i><span id="tot">08</span><button type="button" id="prev" aria-label="Previous finish">‹</button><button type="button" id="next" aria-label="Next finish">›</button></div>
     </div>
   </div>
   <div class="h-media" id="hm">
     <div class="stone" id="stone"><video id="vid" poster="poster.jpg" autoplay muted loop playsinline preload="auto" aria-label="A floating stone changing its surface finish"><source src="hero-720.mp4" type="video/mp4" media="(max-width: 700px)"><source src="hero.mp4" type="video/mp4"></video></div>
     <div class="matlabel"><span class="eyebrow" data-i="ns">Now showing</span><b id="mat">Grey Venetian</b></div>
-    <div class="quote" data-i="qt">Matter shapes<br>emotion.</div>
+    <div class="quote" data-i="qt">Texture transforms<br>space.</div>
   </div>
   <div class="scrollcue" aria-hidden="true"></div>
 </div>
@@ -308,7 +308,7 @@ addEventListener('pointerup',()=>{down=false;rail.classList.remove('drag')});
 addEventListener('pointermove',e=>{if(down)rail.scrollLeft=sl-(e.clientX-sx)});
 
 /* language */
-const T={"en": {}, "uk": {"nf": "Фактури", "na": "Про майстра", "nw": "Роботи", "nc": "Контакти", "q": "Замовити розрахунок", "hs": "Поверхні ручної роботи", "h1": "<span class=\"w\"><span>Поверхні,</span></span> <span class=\"w\"><span>що</span></span><br><span class=\"w\"><span><em>змінюють</em></span></span> <span class=\"w\"><span>простір</span></span>", "hp": "Венеціанська штукатурка, ефекти мармуру та скульптурний рельєф, нанесені вручну, шар за шаром.", "ef": "Переглянути фактури <span aria-hidden=\"true\">→</span>", "nm": "Природні матеріали.<br>Особливі простори.", "ns": "Зараз показано", "qt": "Матеріал створює<br>настрій.", "sf": "Фірмові фактури", "sfh": "Мистецтво <em>поверхні.</em>", "sfp": "Наведіть на фактуру, щоб роздивитися її ближче. Колір, блиск і рельєф кожної підбираються під приміщення.", "ab": "Про майстра", "abp": "Віктор Костріков створює декоративну штукатурку та оздоблення стін вручну: венеціанська штукатурка, ефекти мармуру, скульптурний кам’яний рельєф і орнамент. <em>Кожна поверхня створюється на об’єкті, шар за шаром, саме для свого простору.</em>", "sp": "Почати проєкт", "bh": "Інтер’єри з <em>глибшим</em> змістом.", "bp": "Декоративне оздоблення для домівок, бутиків і особливих просторів.", "ow": "Наші роботи", "sw": "Вибрані роботи", "swh": "Готові <em>стіни.</em>", "ct": "Зроблено руками.<br><em>Створено для вашого життя.</em>", "se": "Простори, що залишаються"}};
+const T={"en": {}, "uk": {"nf": "Фактури", "na": "Про майстра", "nw": "Роботи", "nc": "Контакти", "q": "Замовити розрахунок", "hs": "Поверхні ручної роботи", "h1": "<span class=\"w\"><span>Поверхні,</span></span> <span class=\"w\"><span>що</span></span><br><span class=\"w\"><span><em>змінюють</em></span></span> <span class=\"w\"><span>простір</span></span>", "hp": "Декоративна штукатурка й фактури, нанесені вручну, шар за шаром.", "ef": "Подивитися роботи <span aria-hidden=\"true\">→</span>", "nm": "Зроблено руками.<br>Створено для вашого життя.", "ns": "Зараз показано", "qt": "Фактура змінює<br>простір.", "sf": "Фірмові фактури", "sfh": "Мистецтво <em>поверхні.</em>", "sfp": "Наведіть на фактуру, щоб роздивитися її ближче. Колір, блиск і рельєф кожної підбираються під приміщення.", "ab": "Про майстра", "abp": "Віктор Костріков створює декоративну штукатурку та оздоблення стін вручну: венеціанська штукатурка, ефекти мармуру, скульптурний кам’яний рельєф і орнамент. <em>Кожна поверхня створюється на об’єкті, шар за шаром, саме для свого простору.</em>", "sp": "Почати проєкт", "bh": "Інтер’єри з <em>глибшим</em> змістом.", "bp": "Декоративне оздоблення для домівок, бутиків і особливих просторів.", "ow": "Наші роботи", "sw": "Вибрані роботи", "swh": "Готові <em>стіни.</em>", "ct": "Зроблено руками.<br><em>Створено для вашого життя.</em>", "se": "Простори, що залишаються"}};
 let LANG='en',LI=1;
 document.querySelectorAll('[data-i]').forEach(e=>T.en[e.dataset.i]=e.innerHTML);
 function setLang(l){LANG=l;LI=l==='uk'?2:1;document.documentElement.lang=l==='uk'?'uk':'en';
