@@ -251,7 +251,7 @@ h2{font:300 clamp(36px,4.4vw,84px)/1 var(--serif);letter-spacing:-.03em;margin:1
 
 <script>
 const A={"int1": "img/int1.webp", "int2": "img/int2.webp", "marble": "img/marble.webp", "micro": "img/micro.webp", "gold": "img/gold.webp", "trav": "img/trav.webp", "ven": "img/ven.webp", "w_rock-living": "img/w_rock-living.webp", "w_stencil-gold": "img/w_stencil-gold.webp", "w_dune": "img/w_dune.webp", "w_art-panel": "img/w_art-panel.webp", "w_white-rock": "img/w_white-rock.webp", "w_marble-veins": "img/w_marble-veins.webp", "relief": "img/relief.webp"};
-const D={int1:[716,896],int2:[1051,587],ven:[520,520],trav:[520,520],micro:[520,520],marble:[520,520],relief:[520,520],gold:[520,520],"w_rock-living":[576,590],"w_stencil-gold":[576,1024],w_dune:[576,744],"w_art-panel":[576,410],"w_white-rock":[576,1024],"w_marble-veins":[576,1024]};
+const D={int1:[716,896],int2:[1051,587],ven:[520,520],trav:[520,520],micro:[520,520],marble:[520,520],relief:[576,720],gold:[520,520],"w_rock-living":[576,590],"w_stencil-gold":[576,1024],w_dune:[576,744],"w_art-panel":[576,410],"w_white-rock":[576,1024],"w_marble-veins":[576,1024]};
 document.querySelectorAll('img[data-a]').forEach(i=>{i.loading='lazy';i.decoding='async';i.src=A[i.dataset.a]});
 const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -287,7 +287,7 @@ const tr=document.getElementById('track');const drawMq=()=>tr.innerHTML=[...word
 
 drawMq();
 /* finishes */
-const FX=[["ven","Venetian plaster","Polished lime with depth and light.","Венеціанська штукатурка","Полірований вапняк із глибиною і світлом."],["trav","Travertine","Natural pores and warm stone layers.","Травертин","Природні пори й теплі шари каменю."],["micro","Microcement","Seamless, modern, enduring.","Мікроцемент","Безшовний, сучасний, довговічний."],["marble","Marble effect","Veining, reimagined in plaster.","Ефект мармуру","Мармурові прожилки у штукатурці."],["relief","Sculpted relief","Hand-carved dunes and cliff faces.","Скульптурний рельєф","Дюни та скелі, вирізані вручну."],["gold","Gilding","Gold leaf over dark plaster.","Золочення","Сусальне золото на темній штукатурці."]];
+const FX=[["ven","Venetian plaster","Polished lime with depth and light.","Венеціанська штукатурка","Полірований вапняк із глибиною і світлом."],["trav","Travertine","Natural pores and warm stone layers.","Травертин","Природні пори й теплі шари каменю."],["micro","Microcement","Seamless, modern, enduring.","Мікроцемент","Безшовний, сучасний, довговічний."],["marble","Marble effect","Veining, reimagined in plaster.","Ефект мармуру","Мармурові прожилки у штукатурці."],["relief","Sculpted relief","A cliff face, carved by hand.","Скульптурний рельєф","Скеля, вирізана вручну."],["gold","Gilding","Gold leaf over dark plaster.","Золочення","Сусальне золото на темній штукатурці."]];
 const fg=document.getElementById('fxgrid');
 fg.innerHTML=FX.map((f,i)=>`<figure><div class="im"><img src="${A[f[0]]}" width="${D[f[0]][0]}" height="${D[f[0]][1]}" alt="${f[1]}"${i?' loading="lazy"':''} decoding="async"></div><figcaption><b>${f[1]}</b><span>${f[2]}</span></figcaption></figure>`).join('');
 
