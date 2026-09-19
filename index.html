@@ -178,7 +178,12 @@ h2{font:300 clamp(36px,4.4vw,84px)/1 var(--serif);letter-spacing:-.03em;margin:1
 @media (max-width:900px){
   .links{display:none}.nav{grid-template-columns:1fr auto}
   .hero{grid-template-columns:1fr}.h-text{padding:104px var(--pad) 12px}
-  .chips,.h-foot{max-width:none}.h-foot{flex-wrap:wrap}.h-media{min-height:440px}.h-media .stone{inset:0}
+  .h-foot{max-width:none;flex-wrap:wrap}
+  /* chips become one scrollable row instead of four stacked ones */
+  .chips{max-width:none;flex-wrap:nowrap;overflow-x:auto;scroll-snap-type:x proximity;
+    margin-inline:calc(-1*var(--pad));padding-inline:var(--pad);scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .chips::-webkit-scrollbar{display:none}
+  .chips button{flex:0 0 auto;scroll-snap-align:start}.h-media{min-height:440px}.h-media .stone{inset:0}
   .c-grid{grid-template-columns:1fr}
 }
 @media (max-width:520px){.brand{font-size:13px;letter-spacing:.08em}.brand .bl{display:none}
@@ -272,7 +277,9 @@ MATS.forEach((m,i)=>{const b=document.createElement('button');b.type='button';b.
 function go(i){i=(i+MATS.length)%MATS.length;v.currentTime=MATS[i][0]+.05;v.play().catch(()=>{})}
 document.getElementById('prev').onclick=()=>go(cur-1);document.getElementById('next').onclick=()=>go(cur+1);
 function tick(){const t=v.currentTime,d=v.duration||30;let i=0;MATS.forEach((m,j)=>{if(t>=m[0])i=j});
-  if(i!==cur){cur=i;document.getElementById('num').textContent=String(i+1).padStart(2,'0');[...chips.children].forEach((c,j)=>c.classList.toggle('on',j===i))}
+  if(i!==cur){cur=i;document.getElementById('num').textContent=String(i+1).padStart(2,'0');[...chips.children].forEach((c,j)=>c.classList.toggle('on',j===i));
+    const c=chips.children[i];
+    if(c&&chips.scrollWidth>chips.clientWidth+4)chips.scrollTo({left:c.offsetLeft-(chips.clientWidth-c.offsetWidth)/2,behavior:reduce?'auto':'smooth'})}
   const end=i<MATS.length-1?MATS[i+1][0]:d;document.getElementById('prog').style.width=Math.min(100,(t-MATS[i][0])/(end-MATS[i][0])*100)+'%';requestAnimationFrame(tick)}
 requestAnimationFrame(tick);if(reduce)v.pause();
 
