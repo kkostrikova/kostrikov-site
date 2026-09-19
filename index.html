@@ -177,7 +177,11 @@ h2{font:300 clamp(36px,4.4vw,84px)/1 var(--serif);letter-spacing:-.03em;margin:1
 
 @media (max-width:900px){
   .links{display:none}.nav{grid-template-columns:1fr auto}
-  .hero{grid-template-columns:1fr}.h-text{padding:104px var(--pad) 12px}
+  /* minmax(0,1fr) and min-width:0, or the scrollable chips row (about 900px of
+     content) sets the column width and blows the video up past the screen */
+  .hero{grid-template-columns:minmax(0,1fr)}
+  .h-text{padding:104px var(--pad) 12px;min-width:0}
+  .h-media{min-width:0}
   .h-foot{max-width:none;flex-wrap:wrap}
   /* chips become one scrollable row instead of four stacked ones */
   .chips{max-width:none;flex-wrap:nowrap;overflow-x:auto;scroll-snap-type:x proximity;
@@ -185,6 +189,10 @@ h2{font:300 clamp(36px,4.4vw,84px)/1 var(--serif);letter-spacing:-.03em;margin:1
   .chips::-webkit-scrollbar{display:none}
   .chips button{flex:0 0 auto;scroll-snap-align:start}.h-media{min-height:440px}.h-media .stone{inset:0}
   .c-grid{grid-template-columns:1fr}
+  /* the band: on a narrow screen the text spans the full width, so a
+     left-to-right scrim no longer covers it, and the crop centres on the vase */
+  .band::before{background:linear-gradient(180deg,rgba(222,220,215,.92),rgba(222,220,215,.78) 58%,rgba(222,220,215,.5))}
+  .band img{object-position:76% center}
 }
 @media (max-width:520px){.brand{font-size:13px;letter-spacing:.08em}.brand .bl{display:none}
   .nav .pill{padding:11px 15px;font-size:13px}.lang{padding:10px 12px;font-size:12px}
@@ -286,7 +294,14 @@ requestAnimationFrame(tick);if(reduce)v.pause();
 /* stone parallax */
 const hm=document.getElementById('hm'),stone=document.getElementById('stone');
 if(!reduce&&matchMedia('(pointer:fine)').matches){document.querySelector('.hero').addEventListener('pointermove',e=>{const r=hm.getBoundingClientRect();const x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;stone.style.transform=`translate(${x*-22}px,${y*-16}px) rotate(${x*-2}deg)`});}
-addEventListener('scroll',()=>{if(!reduce&&scrollY<innerHeight)hm.style.transform=`translateY(${scrollY*.18}px)`},{passive:true});
+/* only on a desktop-sized window: on a phone the offset makes the stone look stuck
+   and opens a strip of empty background above it */
+const wide=matchMedia('(min-width:901px)');
+addEventListener('scroll',()=>{
+  if(reduce||!wide.matches){hm.style.transform='';return}
+  if(scrollY<innerHeight)hm.style.transform=`translateY(${scrollY*.18}px)`;
+},{passive:true});
+wide.addEventListener('change',()=>{if(!wide.matches)hm.style.transform=''});
 
 /* marquee */
 const WORDS={en:["Venetian plaster","Travertine","Microcement","Marble effect","Sculpted relief","Gilding","Marmorino","Stencil ornament"],uk:["Венеціанська штукатурка","Травертин","Мікроцемент","Ефект мармуру","Скульптурний рельєф","Золочення","Марморіно","Трафаретний орнамент"]};let words=WORDS.en;
