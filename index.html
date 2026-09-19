@@ -30,7 +30,24 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232E3430'/%3E%3Ctext x='32' y='43' font-family='Georgia,serif' font-size='34' fill='%23F1F2F1' text-anchor='middle'%3EK%3C/text%3E%3C/svg%3E">
 <title>Kostrikov Aesthetic Decor — decorative plaster &amp; wall finishes</title>
 
-<!-- GA4: вставити тег тут -->
+<!-- Google Analytics 4.
+     Встав свій ідентифікатор (виглядає як G-XXXXXXXXXX) у лапки нижче.
+     Поки там порожньо, аналітика не вантажиться взагалі: ні скриптів, ні кукі. -->
+<script>
+window.GA_ID = "";
+
+if (window.GA_ID) {
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = function(){ dataLayer.push(arguments) };
+  gtag('js', new Date());
+  gtag('config', GA_ID, { anonymize_ip: true });
+  var ga = document.createElement('script');
+  ga.async = true;
+  ga.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+  document.head.appendChild(ga);
+}
+</script>
+
 <!-- Meta Pixel: вставити тут -->
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700&display=swap">
@@ -117,7 +134,7 @@ h2{font:300 clamp(36px,4.4vw,84px)/1 var(--serif);letter-spacing:-.03em;margin:1
 
 /* ABOUT */
 .about{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:clamp(28px,6vw,110px);align-items:start}
-.about p.big{font:300 clamp(26px,2.7vw,48px)/1.25 var(--serif);letter-spacing:-.02em;margin:18px 0 0;text-wrap:pretty;text-wrap:balance}
+.about p.big{font:300 clamp(26px,2.7vw,48px)/1.25 var(--serif);letter-spacing:-.02em;margin:18px 0 0;text-align:justify;hyphens:none;-webkit-hyphens:none;max-width:15em}
 /* Ukrainian runs longer: a notch smaller keeps it at six lines, which is where the browser still balances line lengths */
 html[lang=uk] .about p.big{font-size:clamp(24px,2.5vw,36px)}
 .about p.big em{color:#5A625E}
@@ -339,6 +356,17 @@ function setLang(l){LANG=l;LI=l==='uk'?2:1;document.documentElement.lang=l==='uk
   [...rail.querySelectorAll('figcaption')].forEach((f,j)=>{f.querySelector('b').textContent=W[j][l==='uk'?3:1];f.querySelector('span').textContent=W[j][l==='uk'?4:2]});
   try{localStorage.setItem('lang',l)}catch(e){}}
 document.getElementById('lang').onclick=()=>setLang(LANG==='en'?'uk':'en');
+
+/* analytics: which contact channel people actually use (no-op until GA_ID is set) */
+document.querySelectorAll('.ch a, .nav .pill').forEach(a=>{
+  a.addEventListener('click',()=>{
+    if(!window.gtag)return;
+    const h=a.getAttribute('href')||'';
+    const ch=h.includes('wa.me')?'whatsapp':h.startsWith('mailto')?'email':
+             h.includes('instagram')?'instagram':h.includes('tiktok')?'tiktok':'other';
+    gtag('event','contact_click',{channel:ch,place:a.closest('.nav')?'nav':'footer',lang:LANG});
+  });
+});
 let saved=null;try{saved=localStorage.getItem('lang')}catch(e){}
 if(saved==='uk'||(!saved&&/^(uk|ru)/i.test(navigator.language||'')))setLang('uk');
 </script>
