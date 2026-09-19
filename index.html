@@ -116,28 +116,22 @@ section{padding-block:clamp(72px,10vw,150px)}
 h2{font:300 clamp(36px,4.4vw,84px)/1 var(--serif);letter-spacing:-.03em;margin:10px 0 0}
 .sh p{margin:0;color:var(--muted);max-width:26em}
 
-/* FINISHES interactive */
-.fx{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,5vw,80px);align-items:start}
-.fx ol{list-style:none;margin:0;padding:0;border-top:1px solid var(--line);counter-reset:f}
-.fx li{border-bottom:1px solid var(--line)}
-.fx button{all:unset;box-sizing:border-box;width:100%;display:grid;grid-template-columns:48px 1fr auto;align-items:baseline;gap:12px;padding:20px 0;cursor:pointer;transition:padding .4s var(--ease)}
-.fx button .n{font:500 13px/1 var(--sans);letter-spacing:.14em;color:var(--muted)}
-.fx button b{font:400 clamp(22px,2.2vw,42px)/1.1 var(--serif);letter-spacing:-.02em;transition:transform .45s var(--ease)}
-.fx button span.d{font-size:clamp(15px,1vw,19px);color:var(--muted);opacity:0;transform:translateX(-8px);transition:all .4s var(--ease);text-align:right;white-space:nowrap}
-.fx button:hover b,.fx li.on b{transform:translateX(10px)}
-.fx li.on b{font-weight:600}
-.fx li.on span.d,.fx button:hover span.d{opacity:1;transform:none}
-.fx .view{position:sticky;top:100px;aspect-ratio:4/5;border-radius:6px;overflow:hidden;background:var(--stone)}
-.fx .view img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.06);transition:opacity .7s var(--ease),transform 1.4s var(--ease)}
-.fx .view img.on{opacity:1;transform:none}
-.fx .cap{position:absolute;left:20px;bottom:18px;z-index:2;font:500 13px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:#fff;text-shadow:0 1px 12px rgba(0,0,0,.35)}
+/* FINISHES */
+.fx{display:grid;grid-template-columns:repeat(auto-fit,minmax(165px,1fr));gap:clamp(14px,1.7vw,26px)}
+.fx figure{margin:0;display:grid;gap:12px;align-content:start}
+.fx .im{aspect-ratio:4/5;border-radius:6px;overflow:hidden;background:var(--stone)}
+.fx img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.2s var(--ease)}
+.fx figure:hover img{transform:scale(1.05)}
+.fx b{display:block;font:500 clamp(17px,1.25vw,22px)/1.2 var(--serif);letter-spacing:-.02em}
+.fx figcaption span{display:block;margin-top:5px;font-size:clamp(13px,.95vw,15px);line-height:1.45;color:var(--muted);text-wrap:pretty}
 
 /* ABOUT */
-.about{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:clamp(28px,6vw,110px);align-items:start}
+.about{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:clamp(28px,6vw,110px);align-items:stretch}
+.about .txt{display:flex;flex-direction:column;justify-content:center}
 .about p.big{font:300 clamp(24px,2.35vw,34px)/1.35 var(--serif);letter-spacing:-.02em;margin:16px 0 0;max-width:19em;text-wrap:balance}
 .about p.sub{margin:22px 0 0;color:#4A524E;max-width:30em;font-size:clamp(16px,1.2vw,19px);line-height:1.6;text-wrap:pretty}
 .about p.big em{color:#5A625E}
-.about .ph{border-radius:6px;overflow:hidden;aspect-ratio:1/1}
+.about .ph{border-radius:6px;overflow:hidden;aspect-ratio:1/1;max-height:420px;align-self:center;justify-self:end;width:100%;max-width:420px}
 .about .ph img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.08);transition:transform 1.8s var(--ease)}
 .about .ph:hover img{transform:scale(1.02)}
 
@@ -195,8 +189,7 @@ h2{font:300 clamp(36px,4.4vw,84px)/1 var(--serif);letter-spacing:-.03em;margin:1
   .links{display:none}.nav{grid-template-columns:1fr auto}
   .hero{grid-template-columns:1fr}.h-text{padding:104px var(--pad) 12px}
   .chips,.h-foot{max-width:none}.h-foot{flex-wrap:wrap}.h-media{min-height:440px}.h-media .stone{inset:0}
-  .fx,.about,.c-grid{grid-template-columns:1fr}.fx .view{position:relative;top:0;order:-1;aspect-ratio:1}
-  .fx button{grid-template-columns:40px 1fr}.fx button span.d{display:none}
+  .about,.c-grid{grid-template-columns:1fr}
 }
 @media (max-width:520px){.brand{font-size:13px;letter-spacing:.08em}.brand .bl{display:none}
   .nav .pill{padding:11px 15px;font-size:13px}.lang{padding:10px 12px;font-size:12px}
@@ -234,16 +227,13 @@ h2{font:300 clamp(36px,4.4vw,84px)/1 var(--serif);letter-spacing:-.03em;margin:1
 <div class="marquee" aria-hidden="true"><div class="track" id="track"></div></div>
 
 <section class="in" id="finishes">
-  <div class="sh rv"><div><span class="eyebrow" data-i="sf">Signature finishes</span><h2 data-i="sfh">A study <em>in surface.</em></h2></div><p data-i="sfp">Hover a finish to see it up close. Each one is tuned in colour, sheen and relief for the room.</p></div>
-  <div class="fx">
-    <ol id="fxlist"></ol>
-    <div class="view" id="fxview"><span class="cap" id="fxcap"></span></div>
-  </div>
+  <div class="sh rv"><div><span class="eyebrow" data-i="sf">Signature finishes</span><h2 data-i="sfh">A study <em>in surface.</em></h2></div><p data-i="sfp">Six finishes, each tuned in colour, sheen and relief for the room it goes into.</p></div>
+  <div class="fx rv" id="fxgrid"></div>
 </section>
 
-<section class="in" id="about" style="padding-top:0">
+<section class="in" id="about" style="padding-top:0;padding-bottom:clamp(48px,6vw,84px)">
   <div class="about">
-    <div class="rv">
+    <div class="txt rv">
       <span class="eyebrow" data-i="ab">About</span>
       <p class="big" data-i="abh">Viktor Kostrikov creates decorative plaster and wall finishes <em>by hand.</em></p>
       <p class="sub" data-i="abs">Venetian plaster, marble effects, sculpted stone relief and ornament. Each surface is built on site, layer by layer, for the room it belongs to.</p>
@@ -320,12 +310,8 @@ const tr=document.getElementById('track');const drawMq=()=>tr.innerHTML=[...word
 drawMq();
 /* finishes */
 const FX=[["ven","Venetian plaster","Polished lime with depth and light.","Венеціанська штукатурка","Полірований вапняк із глибиною і світлом."],["trav","Travertine","Natural pores and warm stone layers.","Травертин","Природні пори й теплі шари каменю."],["micro","Microcement","Seamless, modern, enduring.","Мікроцемент","Безшовний, сучасний, довговічний."],["marble","Marble effect","Veining, reimagined in plaster.","Ефект мармуру","Мармурові прожилки у штукатурці."],["relief","Sculpted relief","Hand-carved dunes and cliff faces.","Скульптурний рельєф","Дюни та скелі, вирізані вручну."],["gold","Gilding","Gold leaf over dark plaster.","Золочення","Сусальне золото на темній штукатурці."]];
-const fl=document.getElementById('fxlist'),fv=document.getElementById('fxview'),fc=document.getElementById('fxcap');
-FX.forEach((f,i)=>{const im=document.createElement('img');im.decoding='async';if(i)im.loading='lazy';im.width=D[f[0]][0];im.height=D[f[0]][1];im.src=A[f[0]];im.alt=f[1];fv.appendChild(im);
-  const li=document.createElement('li');li.innerHTML=`<button type="button"><span class="n">${String(i+1).padStart(2,'0')}</span><b>${f[1]}</b><span class="d">${f[2]}</span></button>`;
-  const b=li.querySelector('button');b.addEventListener('mouseenter',()=>fx(i));b.addEventListener('focus',()=>fx(i));b.addEventListener('click',()=>fx(i));fl.appendChild(li)});
-function fx(i){[...fl.children].forEach((l,j)=>l.classList.toggle('on',j===i));[...fv.querySelectorAll('img')].forEach((m,j)=>m.classList.toggle('on',j===i));fc.textContent=FX[i][1]}
-fx(0);
+const fg=document.getElementById('fxgrid');
+fg.innerHTML=FX.map((f,i)=>`<figure><div class="im"><img src="${A[f[0]]}" width="${D[f[0]][0]}" height="${D[f[0]][1]}" alt="${f[1]}"${i?' loading="lazy"':''} decoding="async"></div><figcaption><b>${f[1]}</b><span>${f[2]}</span></figcaption></figure>`).join('');
 
 /* work rail */
 const W=[["w_stencil-gold","Stencil & gilding","Grey Venetian","Трафарет і золочення","Сіра венеціанка"],["w_white-rock","Rock relief","Window wall","Кам’яний рельєф","Стіна біля вікна"],["w_dune","Sand-dune relief","Bedroom","Рельєф «дюни»","Спальня"],["w_rock-living","Sculpted rock","Living room","Скульптурна скеля","Вітальня"],["w_marble-veins","Marble effect","Feature wall","Ефект мармуру","Акцентна стіна"],["w_art-panel","Textured panel","Lounge","Фактурне панно","Лаунж"]];
@@ -343,7 +329,7 @@ addEventListener('pointerup',()=>{down=false;rail.classList.remove('drag')});
 addEventListener('pointermove',e=>{if(down)rail.scrollLeft=sl-(e.clientX-sx)});
 
 /* language */
-const T={"en": {}, "uk": {"nf": "Фактури", "na": "Про майстра", "nw": "Роботи", "nc": "Контакти", "q": "Замовити розрахунок", "hs": "Поверхні ручної роботи", "h1": "<span class=\"w\"><span>Поверхні,</span></span> <span class=\"w\"><span>що</span></span><br><span class=\"w\"><span><em>змінюють</em></span></span> <span class=\"w\"><span>простір</span></span>", "hp": "Декоративна штукатурка й фактури, нанесені вручну, шар за шаром.", "ef": "Подивитися роботи <span aria-hidden=\"true\">→</span>", "nm": "Зроблено руками.<br>Створено для вашого життя.", "ns": "Зараз показано", "qt": "Фактура змінює<br>простір.", "sf": "Фірмові фактури", "sfh": "Мистецтво <em>поверхні.</em>", "sfp": "Наведіть на фактуру, щоб роздивитися її ближче. Колір, блиск і рельєф кожної підбираються під приміщення.", "ab": "Про майстра", "abh": "Віктор Костріков створює декоративну штукатурку й оздоблення стін <em>вручну.</em>", "abs": "Венеціанка, мармурові ефекти, скульптурний кам’яний рельєф і орнамент. Кожна поверхня створюється на об’єкті, шар за шаром, саме для свого простору.", "sp": "Почати проєкт", "bh": "Інтер’єри з <em>глибшим</em> змістом.", "bp": "Декоративне оздоблення для домівок, бутиків і особливих просторів.", "ow": "Наші роботи", "sw": "Вибрані роботи", "swh": "Готові <em>стіни.</em>", "ct": "Поговорімо<br><em>про ваші стіни.</em>", "se": "Простори, що залишаються"}};
+const T={"en": {}, "uk": {"nf": "Фактури", "na": "Про майстра", "nw": "Роботи", "nc": "Контакти", "q": "Замовити розрахунок", "hs": "Поверхні ручної роботи", "h1": "<span class=\"w\"><span>Поверхні,</span></span> <span class=\"w\"><span>що</span></span><br><span class=\"w\"><span><em>змінюють</em></span></span> <span class=\"w\"><span>простір</span></span>", "hp": "Декоративна штукатурка й фактури, нанесені вручну, шар за шаром.", "ef": "Подивитися роботи <span aria-hidden=\"true\">→</span>", "nm": "Зроблено руками.<br>Створено для вашого життя.", "ns": "Зараз показано", "qt": "Фактура змінює<br>простір.", "sf": "Фірмові фактури", "sfh": "Мистецтво <em>поверхні.</em>", "sfp": "Шість фактур: колір, блиск і рельєф кожної підбираються під конкретне приміщення.", "ab": "Про майстра", "abh": "Віктор Костріков створює декоративну штукатурку й оздоблення стін <em>вручну.</em>", "abs": "Венеціанка, мармурові ефекти, скульптурний кам’яний рельєф і орнамент. Кожна поверхня створюється на об’єкті, шар за шаром, саме для свого простору.", "sp": "Почати проєкт", "bh": "Інтер’єри з <em>глибшим</em> змістом.", "bp": "Декоративне оздоблення для домівок, бутиків і особливих просторів.", "ow": "Наші роботи", "sw": "Вибрані роботи", "swh": "Готові <em>стіни.</em>", "ct": "Поговорімо<br><em>про ваші стіни.</em>", "se": "Простори, що залишаються"}};
 let LANG='en',LI=1;
 document.querySelectorAll('[data-i]').forEach(e=>T.en[e.dataset.i]=e.innerHTML);
 function setLang(l){LANG=l;LI=l==='uk'?2:1;document.documentElement.lang=l==='uk'?'uk':'en';
@@ -351,8 +337,7 @@ function setLang(l){LANG=l;LI=l==='uk'?2:1;document.documentElement.lang=l==='uk
   document.getElementById('lang').textContent=l==='uk'?'EN':'UA';
   [...chips.children].forEach((c,j)=>c.textContent=MATS[j][LI]);
   words=WORDS[l];drawMq();
-  [...fl.children].forEach((li,j)=>{li.querySelector('b').textContent=FX[j][l==='uk'?3:1];li.querySelector('.d').textContent=FX[j][l==='uk'?4:2]});
-  const on=[...fl.children].findIndex(x=>x.classList.contains('on'));if(on>=0)fc.textContent=FX[on][l==='uk'?3:1];
+  [...fg.children].forEach((fig,j)=>{fig.querySelector('b').textContent=FX[j][l==='uk'?3:1];fig.querySelector('figcaption span').textContent=FX[j][l==='uk'?4:2]});
   [...rail.querySelectorAll('figcaption')].forEach((f,j)=>{f.querySelector('b').textContent=W[j][l==='uk'?3:1];f.querySelector('span').textContent=W[j][l==='uk'?4:2]});
   try{localStorage.setItem('lang',l)}catch(e){}}
 document.getElementById('lang').onclick=()=>setLang(LANG==='en'?'uk':'en');
