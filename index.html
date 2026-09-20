@@ -263,8 +263,8 @@ h2{font:300 clamp(36px,4.4vw,84px)/1 var(--serif);letter-spacing:-.03em;margin:1
 </footer>
 
 <script>
-const A={"int1": "img/int1.webp", "int2": "img/int2.webp", "marble": "img/marble.webp", "micro": "img/micro.webp", "rock": "img/rock.webp", "trav": "img/trav.webp", "ven": "img/ven.webp", "w_rock-living": "img/w_rock-living.webp", "w_stencil-gold": "img/w_stencil-gold.webp", "w_dune": "img/w_dune.webp", "w_art-panel": "img/w_art-panel.webp", "w_white-rock": "img/w_white-rock.webp", "w_marble-veins": "img/w_marble-veins.webp", "relief": "img/relief.webp"};
-const D={int1:[716,896],int2:[1051,587],ven:[576,720],trav:[520,520],micro:[576,720],marble:[520,520],relief:[520,520],rock:[576,720],"w_rock-living":[576,590],"w_stencil-gold":[576,1024],w_dune:[576,744],"w_art-panel":[576,410],"w_white-rock":[576,1024],"w_marble-veins":[576,1024]};
+const A={"w_bed-rock": "img/w_bed-rock.webp", "w_marble-lamp": "img/w_marble-lamp.webp", "w_rock-warm": "img/w_rock-warm.webp", "w_hall-rock": "img/w_hall-rock.webp", "w_bar-rock": "img/w_bar-rock.webp", "w_rock-wide": "img/w_rock-wide.webp", "w_column-rock": "img/w_column-rock.webp", "w_sculpture": "img/w_sculpture.webp", "int1": "img/int1.webp", "int2": "img/int2.webp", "marble": "img/marble.webp", "micro": "img/micro.webp", "rock": "img/rock.webp", "trav": "img/trav.webp", "ven": "img/ven.webp", "relief": "img/relief.webp"};
+const D={"w_bed-rock":[576,720],"w_marble-lamp":[576,720],"w_rock-warm":[576,720],"w_hall-rock":[576,720],"w_bar-rock":[576,720],"w_rock-wide":[576,720],"w_column-rock":[576,720],"w_sculpture":[576,720],int1:[716,896],int2:[1051,587],ven:[576,720],trav:[520,520],micro:[576,720],marble:[520,520],relief:[520,520],rock:[576,720]};
 document.querySelectorAll('img[data-a]').forEach(i=>{i.loading='lazy';i.decoding='async';i.src=A[i.dataset.a]});
 const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -314,7 +314,7 @@ const fg=document.getElementById('fxgrid');
 fg.innerHTML=FX.map((f,i)=>`<figure><div class="im"><img src="${A[f[0]]}" width="${D[f[0]][0]}" height="${D[f[0]][1]}" alt="${f[1]}"${i?' loading="lazy"':''} decoding="async"></div><figcaption><b>${f[1]}</b><span>${f[2]}</span></figcaption></figure>`).join('');
 
 /* work rail */
-const W=[["w_stencil-gold","Stencil & gilding","Grey Venetian","Трафарет і золочення","Сіра венеціанка"],["w_white-rock","Rock relief","Window wall","Кам’яний рельєф","Стіна біля вікна"],["w_dune","Sand-dune relief","Bedroom","Рельєф «дюни»","Спальня"],["w_rock-living","Sculpted rock","Living room","Скульптурна скеля","Вітальня"],["w_marble-veins","Marble effect","Feature wall","Ефект мармуру","Акцентна стіна"],["w_art-panel","Textured panel","Lounge","Фактурне панно","Лаунж"]];
+const W=[["w_bed-rock","Sculpted rock","Bedroom","Скульптурна скеля","Спальня"],["w_marble-lamp","Marble effect","Living room","Ефект мармуру","Вітальня"],["w_rock-warm","Rock relief","Feature wall","Кам’яний рельєф","Акцентна стіна"],["w_hall-rock","White rock","Hallway","Біла скеля","Коридор"],["w_bar-rock","Dark rock","Bar","Темна скеля","Бар"],["w_rock-wide","Stone wall","Living room","Кам’яна стіна","Вітальня"],["w_column-rock","Rock column","Corner","Кам’яна колона","Кут кімнати"],["w_sculpture","Sculpted stone","Lounge","Скульптурний камінь","Лаунж"]];
 const rail=document.getElementById('rail');
 rail.innerHTML=W.map(w=>`<figure><div class="im"><img src="${A[w[0]]}" width="${D[w[0]][0]}" height="${D[w[0]][1]}" alt="${w[1]}, ${w[2]}" loading="lazy" decoding="async" draggable="false"></div><figcaption><b>${w[1]}</b><span>${w[2]}</span></figcaption></figure>`).join('');
 const step=()=>rail.querySelector('figure').offsetWidth+20;
